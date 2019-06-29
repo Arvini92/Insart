@@ -1,0 +1,31 @@
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> Index </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{i + 1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Url </th>
+        <td mat-cell *matCellDef="let element"><a href="{{element.clone_url}}" target="_blank">{{element.clone_url}}</a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="language">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Language </th>
+        <td mat-cell *matCellDef="let element"> {{element.language}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at | date}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
