@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TableComponent } from './table/table.component';
 import { FollowersComponent } from './followers/followers.component';
+import { ReposComponent } from './repos/repos.component';
 
 const routes: Routes = [
-  { path: '', component: TableComponent },
+  { path: '', component: ReposComponent },
   { path: 'followers', component: FollowersComponent },
   { path: '**', redirectTo: '/' },
 ];

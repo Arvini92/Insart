@@ -9,6 +9,11 @@ th.mat-sort-header-sorted {
 ::ng-deep .mat-sort-header-container {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+
+.mat-header-cell {
+    text-align: center;
 }
 
 .mat-cell {

@@ -9,6 +9,7 @@ import { DataStorageService } from '../services/data-storage.service';
   styleUrls: ['./followers.component.css']
 })
 export class FollowersComponent implements OnInit, OnDestroy {
+  followers;
   followersChangedSubscription: Subscription;
   displayedColumns: string[] = ['index', 'avatar_url', 'name', 'login', 'location', 'html_url'];
 
@@ -19,19 +20,11 @@ export class FollowersComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.dataSource.data = this.dataStorageService.sliceFollowers();
+    this.followers = this.dataStorageService.sliceFollowers();
 
     this.followersChangedSubscription = this.dataStorageService.followersChanged.subscribe((followers: []) => {
-      this.dataSource.data = followers;
+      this.followers = followers;
     });
-
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      return data.location && data.location.toLowerCase().includes(filter);
-    };
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnDestroy() {
